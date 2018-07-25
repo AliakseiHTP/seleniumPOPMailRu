@@ -13,7 +13,9 @@ public class LoginPage extends AbstractPage{
 	private static final String LOGIN_INPUT = "//input[@name='Login']";
 	private static final String SUBMIT_BTN = "//button[@type='submit']";
     private static final String PASSWORD_INPUT = "//input[@name='Password']";
-	
+    private static final String I_FRAME = "//iframe[@class='ag-popup__frame__layout__iframe']";
+  
+    
 	public LoginPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(this.driver, this);
@@ -26,16 +28,20 @@ public class LoginPage extends AbstractPage{
 	}
 	
 	public void login(String username, String password) throws InterruptedException{
-		WebElement loginTbx = driver.findElement(By.xpath(LOGIN_INPUT));
+		WebElement iFrame = driver.findElement(By.xpath(I_FRAME));
+        driver.switchTo().frame(iFrame);
+        WebElement loginTbx = driver.findElement(By.xpath(LOGIN_INPUT));
         loginTbx.sendKeys(username);
         WebElement nextBtn = driver.findElement(By.xpath(SUBMIT_BTN));
         nextBtn.click();
+        driver.switchTo().defaultContent();
+        iFrame = driver.findElement(By.xpath(I_FRAME));
+        driver.switchTo().frame(iFrame);
         WebElement passwordTbx = driver.findElement(By.xpath(PASSWORD_INPUT));
         passwordTbx.sendKeys(password);
-        //nextBtn = driver.findElement(By.xpath(SUBMIT_BTN));
         nextBtn.click();
+        driver.switchTo().defaultContent();
 		logger.info("Login performed");
-		Thread.sleep(5000);
 	}
 
 }

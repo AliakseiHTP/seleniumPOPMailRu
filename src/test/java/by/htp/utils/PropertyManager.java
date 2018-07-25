@@ -6,7 +6,7 @@ public class PropertyManager {
 	 private static final ResourceBundle rb;
 
 	    static {
-	        rb = ResourceBundle.getBundle("data");
+	        rb = ResourceBundle.getBundle("test-config");
 	    }
 
 	    public static String getProperty(String s){
