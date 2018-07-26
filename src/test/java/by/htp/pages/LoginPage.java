@@ -27,7 +27,7 @@ public class LoginPage extends AbstractPage {
 		logger.info("Login page opened");
 	}
 	
-	public void login(String username, String password) throws InterruptedException{
+	public void login(String username, String password) {
 		WebElement iFrame = driver.findElement(By.xpath(I_FRAME));
         driver.switchTo().frame(iFrame);
         WebElement loginTbx = driver.findElement(By.xpath(LOGIN_INPUT));

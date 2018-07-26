@@ -2,6 +2,8 @@ package by.htp.pages;
 
 import static java.lang.Math.random;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,9 +17,9 @@ public abstract class AbstractPage {
 	AbstractPage(WebDriver driver){
 		this.driver = driver;
 	}
-	
-	static boolean isPresentXpath(WebDriver driver, String xpath) /*throws InterruptedException*/ {
-        //Thread.sleep(1000);
+    private static final Logger logger = LogManager.getRootLogger();
+
+	static boolean isPresentXpath(WebDriver driver, String xpath) {
         return driver.findElements(By.xpath(xpath)).size() > 0;
     }
 
@@ -32,7 +34,7 @@ public abstract class AbstractPage {
 
     public static void needSleep(int iTime) throws InterruptedException {
         Thread.sleep(iTime);
-        System.out.println(String.format("waiting %d millis", iTime));
+        logger.info(String.format("waiting %d millis", iTime));
     }
 
     public static void compareLabelText(String s1, String s2, WebDriver driver) throws InterruptedException{
@@ -41,7 +43,7 @@ public abstract class AbstractPage {
         String sTextOnSite = textOnSiteLabel.getText();
         System.out.println(String.format("compares the text - '%s' (on site) & '%s' (reference)", sTextOnSite,s2));
         if(sTextOnSite.equals(s2)) {
-            System.out.println("comparing texts... - texts are coincided");
-        } else System.out.println("comparing texts... - texts are not coincide");
+            logger.info("comparing texts... - texts are coincided");
+        } else logger.info("comparing texts... - texts are not coincide");
     }
 }

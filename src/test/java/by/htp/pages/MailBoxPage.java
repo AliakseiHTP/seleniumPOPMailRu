@@ -64,4 +64,15 @@ public class MailBoxPage extends AbstractPage {
             logger.info("The letter was sent");
         } else logger.info("The letter wasn't send");
     }
+
+    public void deleteLetter() throws InterruptedException {
+        WebElement deleteLetter = driver.findElement(By.xpath(DELETE_LETTER));
+        deleteLetter.click();
+        needSleep(2000);
+        WebElement sentLetter = driver.findElement(By.xpath(SENT_LETTER));
+        sentLetter.click();
+        if(!isPresentXpath(driver, String.format(NEED_LETTER,sTopic))) {
+            logger.info("The letter deleted");
+        } else logger.info("The letter wasn't delete");
+    }
 }

@@ -24,7 +24,7 @@ public class Step {
 		DriverSingleton.closeDriver();
 	}
 
-	public void login(String username, String password) throws InterruptedException {
+	public void login(String username, String password) {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.openPage();
 		loginPage.login(username, password);
@@ -38,5 +38,10 @@ public class Step {
 	public void checkSentLetter() {
         MailBoxPage mailBoxPage = new MailBoxPage(driver);
         mailBoxPage.checkSentLetter();
+    }
+
+    public void deleteLetter() throws InterruptedException {
+        MailBoxPage mailBoxPage = new MailBoxPage(driver);
+        mailBoxPage.deleteLetter();
     }
 }
