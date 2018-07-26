@@ -10,25 +10,27 @@ import org.testng.annotations.Test;
 
 public class TestMailRu {
 	private Step step;
-	private static final String LOGIN = getProperty("mail.ru.login");
-    private static final String PASSWORD = getProperty("mail.ru.password");
+	private static final String LOGIN = getProperty("login");
+    private static final String PASSWORD = getProperty("password");
     
     @BeforeMethod(description = "Init browser")
-	public void setUp()
-	{
+	public void setUp() {
 		step = new Step();
 		step.initBrowser();
 	}
 
 	@Test
-	public void loginMailRu() throws InterruptedException
-	{
+	public void loginMailRu() throws InterruptedException {
 		step.login(LOGIN, PASSWORD);
 	}
+
+    @Test
+    public void writeMessage() throws InterruptedException {
+        step.writeMessage();
+    }
 	
 	@AfterMethod(description = "Stop Browser")
-	public void stopBrowser()
-	{
-		step.closeDriver();
+	public void stopBrowser() {
+		//step.closeDriver();
 	}
 }

@@ -18,8 +18,8 @@ public class DriverSingleton {
     private DriverSingleton(){};
 
 
-    public static WebDriver getDriver(){
-        if (null == driver){
+    public static WebDriver getDriver() {
+        if (null == driver) {
             System.setProperty(WEBDRIVER_CHROME_DRIVER, CHROME_DRIVER_EXE_PATH);
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments(Arrays.asList("--incognito", "--start-maximized","--lang=ru"));
@@ -33,7 +33,7 @@ public class DriverSingleton {
         return driver;
     }
 
-    public static void closeDriver(){
+    public static void closeDriver() {
         driver.quit();
         driver = null;
     }

@@ -8,16 +8,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public abstract class AbstractPage {
-	protected WebDriver driver;
+	WebDriver driver;
 
 	public abstract void openPage();
 
-	public AbstractPage(WebDriver driver){
+	AbstractPage(WebDriver driver){
 		this.driver = driver;
 	}
 	
-	public static boolean isPresentXpath(WebDriver driver, String xpath) throws InterruptedException {
-        Thread.sleep(1000);
+	static boolean isPresentXpath(WebDriver driver, String xpath) /*throws InterruptedException*/ {
+        //Thread.sleep(1000);
         return driver.findElements(By.xpath(xpath)).size() > 0;
     }
 

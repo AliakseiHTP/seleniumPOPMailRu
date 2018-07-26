@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends AbstractPage{
+public class LoginPage extends AbstractPage {
 	private final Logger logger = LogManager.getRootLogger();
 	private static final String BASE_URL = "https://e.mail.ru/login";
 	private static final String LOGIN_INPUT = "//input[@name='Login']";

@@ -1,5 +1,6 @@
 package by.htp.steps;
 
+import by.htp.pages.MailBoxPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -23,10 +24,14 @@ public class Step {
 		DriverSingleton.closeDriver();
 	}
 
-	public void login(String username, String password) throws InterruptedException
-	{
+	public void login(String username, String password) throws InterruptedException {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.openPage();
 		loginPage.login(username, password);
+	}
+
+	public void writeMessage(){
+		MailBoxPage mailBoxPage = new MailBoxPage(driver);
+		mailBoxPage.writeMessage();
 	}
 }
