@@ -30,8 +30,13 @@ public class Step {
 		loginPage.login(username, password);
 	}
 
-	public void writeMessage(){
+	public void sentLetter(){
 		MailBoxPage mailBoxPage = new MailBoxPage(driver);
-		mailBoxPage.writeMessage();
+		mailBoxPage.sendLetter();
 	}
+
+	public void checkSentLetter() {
+        MailBoxPage mailBoxPage = new MailBoxPage(driver);
+        mailBoxPage.checkSentLetter();
+    }
 }

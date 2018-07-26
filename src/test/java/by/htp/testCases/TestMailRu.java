@@ -26,7 +26,8 @@ public class TestMailRu {
 
     @Test
     public void writeMessage() throws InterruptedException {
-        step.writeMessage();
+        step.sentLetter();
+        step.checkSentLetter();
     }
 	
 	@AfterMethod(description = "Stop Browser")
